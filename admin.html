@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Online Housie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-logo">
+            <h1><i class="fas fa-dice"></i> <span>Housie Admin</span></h1>
+        </div>
+        
+        <div class="admin-nav-links">
+            <a href="#" class="admin-nav-link active" data-section="start-game">
+                <i class="fas fa-play-circle"></i>
+                <span>Start Game</span>
+                <span class="notification-badge">3</span>
+            </a>
+            
+            <a href="#" class="admin-nav-link" data-section="booking-management">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Booking Management</span>
+                <span class="notification-badge">12</span>
+            </a>
+            
+            <a href="#" class="admin-nav-link" data-section="winners">
+                <i class="fas fa-trophy"></i>
+                <span>Winners</span>
+            </a>
+            
+            <a href="#" class="admin-nav-link" data-section="recharge-approval">
+                <i class="fas fa-coins"></i>
+                <span>Recharge Approval</span>
+                <span class="notification-badge">5</span>
+            </a>
+            
+            <a href="#" class="admin-nav-link" data-section="withdrawal">
+                <i class="fas fa-wallet"></i>
+                <span>Withdrawal</span>
+                <span class="notification-badge">8</span>
+            </a>
+            
+            <a href="#" class="admin-nav-link" data-section="user-management">
+                <i class="fas fa-users"></i>
+                <span>User Management</span>
+            </a>
+            
+            <a href="#" class="admin-nav-link" data-section="login">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Start Game Section -->
+        <div class="admin-content active" id="start-game">
+            <div class="admin-header">
+                <h2><i class="fas fa-play-circle"></i> Start Game</h2>
+                <div class="admin-header-controls">
+                    <div class="admin-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="admin-profile">
+                        <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Admin">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-tabs">
+                <button class="tab-btn active">Current Session</button>
+                <button class="tab-btn">Upcoming Sessions</button>
+                <button class="tab-btn">Game History</button>
+            </div>
+            
+            <div class="game-controls">
+                <button class="btn btn-primary" id="generate-tickets">
+                    <i class="fas fa-ticket-alt"></i> Generate Tickets
+                </button>
+                <button class="btn btn-success" id="start-game-btn">
+                    <i class="fas fa-play"></i> Start Game (7:00 PM)
+                </button>
+                <button class="btn btn-warning" id="auto-call-toggle">
+                    <i class="fas fa-random"></i> Start Auto Call
+                </button>
+                <button class="btn btn-danger" id="stop-game">
+                    <i class="fas fa-stop"></i> End Game
+                </button>
+            </div>
+            
+            <div class="session-info">
+                <div class="info-card">
+                    <div class="info-value" id="tickets-booked">28</div>
+                    <div class="info-label">Tickets Booked</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-value" id="players-active">28</div>
+                    <div class="info-label">Players Active</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-value" id="time-elapsed">00:00</div>
+                    <div class="info-label">Time Elapsed</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-value" id="numbers-called">0</div>
+                    <div class="info-label">Numbers Called</div>
+                </div>
+            </div>
+            
+            <div class="game-board">
+                <h3>Current Game: 7:00 PM Session</h3>
+                <div class="current-number" id="current-number">--</div>
+                
+                <div class="called-numbers" id="called-numbers">
+                    <!-- Numbers will appear here as called -->
+                </div>
+                
+                <div class="game-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-value" id="stat-numbers">0</div>
+                        <div>Numbers Called</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <i class="fas fa-user-friends"></i>
+                        <div class="stat-value" id="stat-players">28</div>
+                        <div>Players Active</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <div class="stat-value" id="stat-winners">0</div>
+                        <div>Winners Today</div>
+                    </div>
+                </div>
+                
+                <div class="winners-container" id="winners-container" style="display: none;">
+                    <h3>Session Winners</h3>
+                    <div class="winner-card">
+                        <div class="winner-badge"><i class="fas fa-crown"></i></div>
+                        <div class="winner-info">
+                            <div class="winner-name">Raj Sharma (User #4587)</div>
+                            <div>Ticket: #TKT0012</div>
+                            <div class="winner-prize">Full House Winner - ₹1000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Booking Management Section -->
+        <div class="admin-content" id="booking-management">
+            <div class="admin-header">
+                <h2><i class="fas fa-ticket-alt"></i> Booking Management</h2>
+            </div>
+            
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Time Slot</th>
+                        <th>User ID</th>
+                        <th>Mobile Number</th>
+                        <th>Ticket ID</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7:00 PM</td>
+                        <td>#USR4587</td>
+                        <td>+91 98765 43210</td>
+                        <td>#TKT0012</td>
+                        <td>₹50</td>
+                        <td>Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>7:00 PM</td>
+                        <td>#USR3254</td>
+                        <td>+91 87654 32109</td>
+                        <td>#TKT0045</td>
+                        <td>₹50</td>
+                        <td>Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>6:00 PM</td>
+                        <td>#USR7894</td>
+                        <td>+91 76543 21098</td>
+                        <td>#TKT0078</td>
+                        <td>₹50</td>
+                        <td>Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>8:00 PM</td>
+                        <td>#USR1254</td>
+                        <td>+91 65432 10987</td>
+                        <td>#TKT0023</td>
+                        <td>₹50</td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>9:00 PM</td>
+                        <td>#USR9854</td>
+                        <td>+91 94321 87650</td>
+                        <td>#TKT0091</td>
+                        <td>₹50</td>
+                        <td>Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>5:00 PM</td>
+                        <td>#USR6541</td>
+                        <td>+91 87654 32109</td>
+                        <td>#TKT0054</td>
+                        <td>₹50</td>
+                        <td>Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 PM</td>
+                        <td>#USR3214</td>
+                        <td>+91 76543 21098</td>
+                        <td>#TKT0087</td>
+                        <td>₹50</td>
+                        <td>Pending</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Winners Section -->
+        <div class="admin-content" id="winners">
+            <div class="admin-header">
+                <h2><i class="fas fa-trophy"></i> Winners</h2>
+            </div>
+            
+            <div class="section-tabs">
+                <button class="tab-btn active">Today</button>
+                <button class="tab-btn">This Week</button>
+                <button class="tab-btn">All Time</button>
+            </div>
+            
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Time Slot</th>
+                        <th>User ID</th>
+                        <th>Mobile Number</th>
+                        <th>Ticket ID</th>
+                        <th>Prize</th>
+                        <th>Winning Pattern</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7:00 PM</td>
+                        <td>#USR4587</td>
+                        <td>+91 98765 43210</td>
+                        <td>#TKT0012</td>
+                        <td>₹1000</td>
+                        <td>Full House</td>
+                    </tr>
+                    <tr>
+                        <td>6:00 PM</td>
+                        <td>#USR7894</td>
+                        <td>+91 76543 21098</td>
+                        <td>#TKT0078</td>
+                        <td>₹200</td>
+                        <td>Top Line</td>
+                    </tr>
+                    <tr>
+                        <td>5:00 PM</td>
+                        <td>#USR6541</td>
+                        <td>+91 87654 32109</td>
+                        <td>#TKT0054</td>
+                        <td>₹200</td>
+                        <td>Middle Line</td>
+                    </tr>
+                    <tr>
+                        <td>9:00 PM</td>
+                        <td>#USR9854</td>
+                        <td>+91 94321 87650</td>
+                        <td>#TKT0091</td>
+                        <td>₹200</td>
+                        <td>Bottom Line</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Recharge Approval Section -->
+        <div class="admin-content" id="recharge-approval">
+            <div class="admin-header">
+                <h2><i class="fas fa-coins"></i> Recharge Approval</h2>
+            </div>
+            
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Mobile Number</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#USR4587</td>
+                        <td>+91 98765 43210</td>
+                        <td>₹1000</td>
+                        <td>Today, 15:30</td>
+                        <td><span class="status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#USR3254</td>
+                        <td>+91 87654 32109</td>
+                        <td>₹500</td>
+                        <td>Today, 14:45</td>
+                        <td><span class="status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#USR7894</td>
+                        <td>+91 76543 21098</td>
+                        <td>₹2000</td>
+                        <td>Today, 13:20</td>
+                        <td><span class="status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#USR1254</td>
+                        <td>+91 65432 10987</td>
+                        <td>₹750</td>
+                        <td>Today, 11:45</td>
+                        <td><span class="status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Withdrawal Section -->
+        <div class="admin-content" id="withdrawal">
+            <div class="admin-header">
+                <h2><i class="fas fa-wallet"></i> Withdrawal Requests</h2>
+            </div>
+            
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Mobile Number</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#USR9854</td>
+                        <td>+91 94321 87650</td>
+                        <td>₹1500</td>
+                        <td>Today, 16:15</td>
+                        <td><span class="status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#USR6541</td>
+                        <td>+91 87654 32109</td>
+                        <td>₹800</td>
+                        <td>Today, 15:50</td>
+                        <td><span class="status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#USR3214</td>
+                        <td>+91 76543 21098</td>
+                        <td>₹1200</td>
+                        <td>Today, 14:30</td>
+                        <td><span class="status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- User Management Section -->
+        <div class="admin-content" id="user-management">
+            <div class="admin-header">
+                <h2><i class="fas fa-users"></i> User Management</h2>
+            </div>
+            
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Mobile Number</th>
+                        <th>Balance</th>
+                        <th>Joined Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#USR9854</td>
+                        <td>Priya Patel</td>
+                        <td>+91 94321 87650</td>
+                        <td>₹1250</td>
+                        <td>Today, 10:15</td>
+                        <td><span class="status-approved">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>#USR6541</td>
+                        <td>Rahul Verma</td>
+                        <td>+91 87654 32109</td>
+                        <td>₹780</td>
+                        <td>Today, 09:45</td>
+                        <td><span class="status-approved">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>#USR3214</td>
+                        <td>Sunil Kumar</td>
+                        <td>+91 76543 21098</td>
+                        <td>₹2100</td>
+                        <td>Today, 08:30</td>
+                        <td><span class="status-approved">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>#USR4587</td>
+                        <td>Raj Sharma</td>
+                        <td>+91 98765 43210</td>
+                        <td>₹3200</td>
+                        <td>Yesterday, 19:20</td>
+                        <td><span class="status-approved">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>#USR3254</td>
+                        <td>Neha Gupta</td>
+                        <td>+91 87654 32109</td>
+                        <td>₹450</td>
+                        <td>Yesterday, 18:15</td>
+                        <td><span class="status-approved">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Login Section -->
+        <div class="admin-content" id="login">
+            <div class="admin-header">
+                <h2><i class="fas fa-sign-in-alt"></i> Admin Login</h2>
+            </div>
+            
+            <div style="max-width: 500px; margin: 0 auto; padding: 30px; background: rgba(0,0,0,0.2); border-radius: 15px;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <i class="fas fa-user-shield" style="font-size: 4rem; color: #7b1fa2;"></i>
+                    <h2 style="margin-top: 15px;">Administrator Login</h2>
+                    <p>Enter your credentials to access the admin panel</p>
+                </div>
+                
+                <form>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px;">Username</label>
+                        <input type="text" style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; margin-bottom: 8px;">Password</label>
+                        <input type="password" style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.admin-nav-link');
+        const sections = document.querySelectorAll('.admin-content');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and sections
+                navLinks.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show the corresponding section
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+        
+        // Game functionality
+        const generateTicketsBtn = document.getElementById('generate-tickets');
+        const startGameBtn = document.getElementById('start-game-btn');
+        const autoCallToggle = document.getElementById('auto-call-toggle');
+        const stopGameBtn = document.getElementById('stop-game');
+        const currentNumberEl = document.getElementById('current-number');
+        const calledNumbersEl = document.getElementById('called-numbers');
+        const numbersCalledEl = document.getElementById('numbers-called');
+        const statNumbersEl = document.getElementById('stat-numbers');
+        const winnersContainer = document.getElementById('winners-container');
+        
+        let gameActive = false;
+        let autoCallActive = false;
+        let autoCallInterval;
+        let calledNumbers = [];
+        let numbersCalled = 0;
+        let timeElapsed = 0;
+        let timeInterval;
+        
+        // Generate random tickets
+        generateTicketsBtn.addEventListener('click', function() {
+            alert('Tickets generated for all time slots!');
+        });
+        
+        // Start game
+        startGameBtn.addEventListener('click', function() {
+            if (!gameActive) {
+                gameActive = true;
+                this.textContent = 'Game in Progress';
+                this.disabled = true;
+                autoCallToggle.disabled = false;
+                stopGameBtn.disabled = false;
+                
+                // Start timer
+                timeInterval = setInterval(() => {
+                    timeElapsed++;
+                    const minutes = Math.floor(timeElapsed / 60).toString().padStart(2, '0');
+                    const seconds = (timeElapsed % 60).toString().padStart(2, '0');
+                    document.getElementById('time-elapsed').textContent = `${minutes}:${seconds}`;
+                }, 1000);
+                
+                // Start with an initial number
+                callRandomNumber();
+            }
+        });
+        
+        // Toggle auto number calling
+        autoCallToggle.addEventListener('click', function() {
+            if (!autoCallActive) {
+                autoCallActive = true;
+                this.innerHTML = '<i class="fas fa-pause"></i> Pause Auto Call';
+                autoCallInterval = setInterval(callRandomNumber, 3000);
+            } else {
+                autoCallActive = false;
+                this.innerHTML = '<i class="fas fa-random"></i> Start Auto Call';
+                clearInterval(autoCallInterval);
+            }
+        });
+        
+        // Stop game
+        stopGameBtn.addEventListener('click', function() {
+            if (gameActive) {
+                gameActive = false;
+                autoCallActive = false;
+                
+                clearInterval(timeInterval);
+                clearInterval(autoCallInterval);
+                
+                startGameBtn.textContent = 'Start Game (7:00 PM)';
+                startGameBtn.disabled = false;
+                autoCallToggle.innerHTML = '<i class="fas fa-random"></i> Start Auto Call';
+                autoCallToggle.disabled = true;
+                this.disabled = true;
+                
+                // Show winners
+                winnersContainer.style.display = 'block';
+            }
+        });
+        
+        // Call a random number
+        function callRandomNumber() {
+            if (numbersCalled >= 90) return;
+            
+            let newNumber;
+            do {
+                newNumber = Math.floor(Math.random() * 90) + 1;
+            } while (calledNumbers.includes(newNumber));
+            
+            calledNumbers.push(newNumber);
+            numbersCalled++;
+            
+            // Update UI
+            currentNumberEl.textContent = newNumber;
+            numbersCalledEl.textContent = numbersCalled;
+            statNumbersEl.textContent = numbersCalled;
+            
+            // Add to called numbers list
+            const numberElement = document.createElement('div');
+            numberElement.classList.add('called-number');
+            numberElement.textContent = newNumber;
+            calledNumbersEl.appendChild(numberElement);
+            
+            // Check for winner (random chance for demo)
+            if (numbersCalled > 20 && Math.random() > 0.95) {
+                setTimeout(() => {
+                    alert(`Full House Winner! User #${Math.floor(1000 + Math.random() * 9000)} has won!`);
+                    stopGameBtn.click();
+                }, 1000);
+            }
+        }
+        
+        // Simulate notifications
+        setInterval(() => {
+            const badges = document.querySelectorAll('.notification-badge');
+            badges.forEach(badge => {
+                const current = parseInt(badge.textContent);
+                if (current < 20) {
+                    badge.textContent = current + 1;
+                }
+            });
+        }, 30000);
+    </script>
+</body>
+</html>
