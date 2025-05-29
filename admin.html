@@ -8,8 +8,13 @@
      <link rel="stylesheet" href="admin.css">
 </head>
 <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
     <!-- Admin Navigation -->
-    <nav class="admin-nav">
+    <nav class="admin-nav" id="adminNav">
         <div class="admin-logo">
             <h1><i class="fas fa-dice"></i> <span>Housie Admin</span></h1>
         </div>
@@ -162,76 +167,78 @@
                 <h2><i class="fas fa-ticket-alt"></i> Booking Management</h2>
             </div>
             
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Time Slot</th>
-                        <th>User ID</th>
-                        <th>Mobile Number</th>
-                        <th>Ticket ID</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>7:00 PM</td>
-                        <td>#USR4587</td>
-                        <td>+91 98765 43210</td>
-                        <td>#TKT0012</td>
-                        <td>₹50</td>
-                        <td>Confirmed</td>
-                    </tr>
-                    <tr>
-                        <td>7:00 PM</td>
-                        <td>#USR3254</td>
-                        <td>+91 87654 32109</td>
-                        <td>#TKT0045</td>
-                        <td>₹50</td>
-                        <td>Confirmed</td>
-                    </tr>
-                    <tr>
-                        <td>6:00 PM</td>
-                        <td>#USR7894</td>
-                        <td>+91 76543 21098</td>
-                        <td>#TKT0078</td>
-                        <td>₹50</td>
-                        <td>Confirmed</td>
-                    </tr>
-                    <tr>
-                        <td>8:00 PM</td>
-                        <td>#USR1254</td>
-                        <td>+91 65432 10987</td>
-                        <td>#TKT0023</td>
-                        <td>₹50</td>
-                        <td>Pending</td>
-                    </tr>
-                    <tr>
-                        <td>9:00 PM</td>
-                        <td>#USR9854</td>
-                        <td>+91 94321 87650</td>
-                        <td>#TKT0091</td>
-                        <td>₹50</td>
-                        <td>Confirmed</td>
-                    </tr>
-                    <tr>
-                        <td>5:00 PM</td>
-                        <td>#USR6541</td>
-                        <td>+91 87654 32109</td>
-                        <td>#TKT0054</td>
-                        <td>₹50</td>
-                        <td>Confirmed</td>
-                    </tr>
-                    <tr>
-                        <td>10:00 PM</td>
-                        <td>#USR3214</td>
-                        <td>+91 76543 21098</td>
-                        <td>#TKT0087</td>
-                        <td>₹50</td>
-                        <td>Pending</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Time Slot</th>
+                            <th>User ID</th>
+                            <th>Mobile Number</th>
+                            <th>Ticket ID</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>7:00 PM</td>
+                            <td>#USR4587</td>
+                            <td>+91 98765 43210</td>
+                            <td>#TKT0012</td>
+                            <td>₹50</td>
+                            <td>Confirmed</td>
+                        </tr>
+                        <tr>
+                            <td>7:00 PM</td>
+                            <td>#USR3254</td>
+                            <td>+91 87654 32109</td>
+                            <td>#TKT0045</td>
+                            <td>₹50</td>
+                            <td>Confirmed</td>
+                        </tr>
+                        <tr>
+                            <td>6:00 PM</td>
+                            <td>#USR7894</td>
+                            <td>+91 76543 21098</td>
+                            <td>#TKT0078</td>
+                            <td>₹50</td>
+                            <td>Confirmed</td>
+                        </tr>
+                        <tr>
+                            <td>8:00 PM</td>
+                            <td>#USR1254</td>
+                            <td>+91 65432 10987</td>
+                            <td>#TKT0023</td>
+                            <td>₹50</td>
+                            <td>Pending</td>
+                        </tr>
+                        <tr>
+                            <td>9:00 PM</td>
+                            <td>#USR9854</td>
+                            <td>+91 94321 87650</td>
+                            <td>#TKT0091</td>
+                            <td>₹50</td>
+                            <td>Confirmed</td>
+                        </tr>
+                        <tr>
+                            <td>5:00 PM</td>
+                            <td>#USR6541</td>
+                            <td>+91 87654 32109</td>
+                            <td>#TKT0054</td>
+                            <td>₹50</td>
+                            <td>Confirmed</td>
+                        </tr>
+                        <tr>
+                            <td>10:00 PM</td>
+                            <td>#USR3214</td>
+                            <td>+91 76543 21098</td>
+                            <td>#TKT0087</td>
+                            <td>₹50</td>
+                            <td>Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
         <!-- Winners Section -->
@@ -246,52 +253,54 @@
                 <button class="tab-btn">All Time</button>
             </div>
             
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Time Slot</th>
-                        <th>User ID</th>
-                        <th>Mobile Number</th>
-                        <th>Ticket ID</th>
-                        <th>Prize</th>
-                        <th>Winning Pattern</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>7:00 PM</td>
-                        <td>#USR4587</td>
-                        <td>+91 98765 43210</td>
-                        <td>#TKT0012</td>
-                        <td>₹1000</td>
-                        <td>Full House</td>
-                    </tr>
-                    <tr>
-                        <td>6:00 PM</td>
-                        <td>#USR7894</td>
-                        <td>+91 76543 21098</td>
-                        <td>#TKT0078</td>
-                        <td>₹200</td>
-                        <td>Top Line</td>
-                    </tr>
-                    <tr>
-                        <td>5:00 PM</td>
-                        <td>#USR6541</td>
-                        <td>+91 87654 32109</td>
-                        <td>#TKT0054</td>
-                        <td>₹200</td>
-                        <td>Middle Line</td>
-                    </tr>
-                    <tr>
-                        <td>9:00 PM</td>
-                        <td>#USR9854</td>
-                        <td>+91 94321 87650</td>
-                        <td>#TKT0091</td>
-                        <td>₹200</td>
-                        <td>Bottom Line</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Time Slot</th>
+                            <th>User ID</th>
+                            <th>Mobile Number</th>
+                            <th>Ticket ID</th>
+                            <th>Prize</th>
+                            <th>Winning Pattern</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>7:00 PM</td>
+                            <td>#USR4587</td>
+                            <td>+91 98765 43210</td>
+                            <td>#TKT0012</td>
+                            <td>₹1000</td>
+                            <td>Full House</td>
+                        </tr>
+                        <tr>
+                            <td>6:00 PM</td>
+                            <td>#USR7894</td>
+                            <td>+91 76543 21098</td>
+                            <td>#TKT0078</td>
+                            <td>₹200</td>
+                            <td>Top Line</td>
+                        </tr>
+                        <tr>
+                            <td>5:00 PM</td>
+                            <td>#USR6541</td>
+                            <td>+91 87654 32109</td>
+                            <td>#TKT0054</td>
+                            <td>₹200</td>
+                            <td>Middle Line</td>
+                        </tr>
+                        <tr>
+                            <td>9:00 PM</td>
+                            <td>#USR9854</td>
+                            <td>+91 94321 87650</td>
+                            <td>#TKT0091</td>
+                            <td>₹200</td>
+                            <td>Bottom Line</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
         <!-- Recharge Approval Section -->
@@ -300,64 +309,66 @@
                 <h2><i class="fas fa-coins"></i> Recharge Approval</h2>
             </div>
             
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Mobile Number</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#USR4587</td>
-                        <td>+91 98765 43210</td>
-                        <td>₹1000</td>
-                        <td>Today, 15:30</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td class="action-buttons">
-                            <button class="btn btn-success">Approve</button>
-                            <button class="btn btn-danger">Reject</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#USR3254</td>
-                        <td>+91 87654 32109</td>
-                        <td>₹500</td>
-                        <td>Today, 14:45</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td class="action-buttons">
-                            <button class="btn btn-success">Approve</button>
-                            <button class="btn btn-danger">Reject</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#USR7894</td>
-                        <td>+91 76543 21098</td>
-                        <td>₹2000</td>
-                        <td>Today, 13:20</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td class="action-buttons">
-                            <button class="btn btn-success">Approve</button>
-                            <button class="btn btn-danger">Reject</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#USR1254</td>
-                        <td>+91 65432 10987</td>
-                        <td>₹750</td>
-                        <td>Today, 11:45</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td class="action-buttons">
-                            <button class="btn btn-success">Approve</button>
-                            <button class="btn btn-danger">Reject</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Mobile Number</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#USR4587</td>
+                            <td>+91 98765 43210</td>
+                            <td>₹1000</td>
+                            <td>Today, 15:30</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#USR3254</td>
+                            <td>+91 87654 32109</td>
+                            <td>₹500</td>
+                            <td>Today, 14:45</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#USR7894</td>
+                            <td>+91 76543 21098</td>
+                            <td>₹2000</td>
+                            <td>Today, 13:20</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#USR1254</td>
+                            <td>+91 65432 10987</td>
+                            <td>₹750</td>
+                            <td>Today, 11:45</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
         <!-- Withdrawal Section -->
@@ -366,53 +377,55 @@
                 <h2><i class="fas fa-wallet"></i> Withdrawal Requests</h2>
             </div>
             
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Mobile Number</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#USR9854</td>
-                        <td>+91 94321 87650</td>
-                        <td>₹1500</td>
-                        <td>Today, 16:15</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td class="action-buttons">
-                            <button class="btn btn-success">Approve</button>
-                            <button class="btn btn-danger">Reject</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#USR6541</td>
-                        <td>+91 87654 32109</td>
-                        <td>₹800</td>
-                        <td>Today, 15:50</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td class="action-buttons">
-                            <button class="btn btn-success">Approve</button>
-                            <button class="btn btn-danger">Reject</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#USR3214</td>
-                        <td>+91 76543 21098</td>
-                        <td>₹1200</td>
-                        <td>Today, 14:30</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td class="action-buttons">
-                            <button class="btn btn-success">Approve</button>
-                            <button class="btn btn-danger">Reject</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Mobile Number</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#USR9854</td>
+                            <td>+91 94321 87650</td>
+                            <td>₹1500</td>
+                            <td>Today, 16:15</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#USR6541</td>
+                            <td>+91 87654 32109</td>
+                            <td>₹800</td>
+                            <td>Today, 15:50</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#USR3214</td>
+                            <td>+91 76543 21098</td>
+                            <td>₹1200</td>
+                            <td>Today, 14:30</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
         <!-- User Management Section -->
@@ -421,60 +434,62 @@
                 <h2><i class="fas fa-users"></i> User Management</h2>
             </div>
             
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Name</th>
-                        <th>Mobile Number</th>
-                        <th>Balance</th>
-                        <th>Joined Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#USR9854</td>
-                        <td>Priya Patel</td>
-                        <td>+91 94321 87650</td>
-                        <td>₹1250</td>
-                        <td>Today, 10:15</td>
-                        <td><span class="status-approved">Active</span></td>
-                    </tr>
-                    <tr>
-                        <td>#USR6541</td>
-                        <td>Rahul Verma</td>
-                        <td>+91 87654 32109</td>
-                        <td>₹780</td>
-                        <td>Today, 09:45</td>
-                        <td><span class="status-approved">Active</span></td>
-                    </tr>
-                    <tr>
-                        <td>#USR3214</td>
-                        <td>Sunil Kumar</td>
-                        <td>+91 76543 21098</td>
-                        <td>₹2100</td>
-                        <td>Today, 08:30</td>
-                        <td><span class="status-approved">Active</span></td>
-                    </tr>
-                    <tr>
-                        <td>#USR4587</td>
-                        <td>Raj Sharma</td>
-                        <td>+91 98765 43210</td>
-                        <td>₹3200</td>
-                        <td>Yesterday, 19:20</td>
-                        <td><span class="status-approved">Active</span></td>
-                    </tr>
-                    <tr>
-                        <td>#USR3254</td>
-                        <td>Neha Gupta</td>
-                        <td>+91 87654 32109</td>
-                        <td>₹450</td>
-                        <td>Yesterday, 18:15</td>
-                        <td><span class="status-approved">Active</span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Mobile Number</th>
+                            <th>Balance</th>
+                            <th>Joined Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#USR9854</td>
+                            <td>Priya Patel</td>
+                            <td>+91 94321 87650</td>
+                            <td>₹1250</td>
+                            <td>Today, 10:15</td>
+                            <td><span class="status-approved">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>#USR6541</td>
+                            <td>Rahul Verma</td>
+                            <td>+91 87654 32109</td>
+                            <td>₹780</td>
+                            <td>Today, 09:45</td>
+                            <td><span class="status-approved">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>#USR3214</td>
+                            <td>Sunil Kumar</td>
+                            <td>+91 76543 21098</td>
+                            <td>₹2100</td>
+                            <td>Today, 08:30</td>
+                            <td><span class="status-approved">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>#USR4587</td>
+                            <td>Raj Sharma</td>
+                            <td>+91 98765 43210</td>
+                            <td>₹3200</td>
+                            <td>Yesterday, 19:20</td>
+                            <td><span class="status-approved">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>#USR3254</td>
+                            <td>Neha Gupta</td>
+                            <td>+91 87654 32109</td>
+                            <td>₹450</td>
+                            <td>Yesterday, 18:15</td>
+                            <td><span class="status-approved">Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
         <!-- Login Section -->
@@ -483,25 +498,25 @@
                 <h2><i class="fas fa-sign-in-alt"></i> Admin Login</h2>
             </div>
             
-            <div style="max-width: 500px; margin: 0 auto; padding: 30px; background: rgba(0,0,0,0.2); border-radius: 15px;">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <i class="fas fa-user-shield" style="font-size: 4rem; color: #7b1fa2;"></i>
-                    <h2 style="margin-top: 15px;">Administrator Login</h2>
+            <div class="login-container">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <i class="fas fa-user-shield" style="font-size: 3rem; color: #7b1fa2;"></i>
+                    <h2>Administrator Login</h2>
                     <p>Enter your credentials to access the admin panel</p>
                 </div>
                 
                 <form>
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px;">Username</label>
-                        <input type="text" style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text">
                     </div>
                     
-                    <div style="margin-bottom: 25px;">
-                        <label style="display: block; margin-bottom: 8px;">Password</label>
-                        <input type="password" style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password">
                     </div>
                     
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">
+                    <button type="submit" class="btn btn-primary">
                         <i class="fas fa-sign-in-alt"></i> Login
                     </button>
                 </form>
@@ -513,6 +528,8 @@
         // Navigation functionality
         const navLinks = document.querySelectorAll('.admin-nav-link');
         const sections = document.querySelectorAll('.admin-content');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const adminNav = document.getElementById('adminNav');
         
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -528,7 +545,27 @@
                 // Show the corresponding section
                 const sectionId = this.getAttribute('data-section');
                 document.getElementById(sectionId).classList.add('active');
+                
+                // Hide mobile menu after selection
+                if (window.innerWidth < 768) {
+                    adminNav.classList.remove('active');
+                }
             });
+        });
+        
+        // Mobile menu toggle
+        mobileMenuToggle.addEventListener('click', function() {
+            adminNav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = adminNav.contains(event.target);
+            const isClickOnToggle = mobileMenuToggle.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnToggle && adminNav.classList.contains('active')) {
+                adminNav.classList.remove('active');
+            }
         });
         
         // Game functionality
