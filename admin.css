@@ -15,658 +15,652 @@
             --warning: #ff9800;
             --danger: #f44336;
             --card-bg: rgba(26, 26, 46, 0.9);
+            --sidebar-bg: #1a1a2e;
+            --sidebar-hover: #2d2d4a;
+            --sidebar-active: #4a148c;
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            background: #0f0f1e;
             color: #fff;
             overflow-x: hidden;
             min-height: 100vh;
-        }
-
-        /* Responsive background section */
-        .background-section {
-            position: relative;
-            width: 100%;
-            min-height: 200px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80') center/cover no-repeat;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 1.5rem;
         }
 
-        .background-section h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #ff6b6b, #ff8e53);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .background-section p {
-            max-width: 800px;
-            font-size: 0.95rem;
-            color: #e0e0e0;
-            margin-bottom: 1.5rem;
-        }
-
-        .background-section .live-draw {
-            background: rgba(255, 0, 0, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { background: rgba(255, 0, 0, 0.3); }
-            50% { background: rgba(255, 0, 0, 0.6); }
-            100% { background: rgba(255, 0, 0, 0.3); }
-        }
-
-        /* Navigation Bar */
-        nav {
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Admin Navigation */
+        .admin-nav {
+            background: var(--sidebar-bg);
+            width: 100%;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .admin-logo {
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo i {
-            font-size: 1.8rem;
-            color: var(--accent);
-        }
-
-        .logo h1 {
-            font-size: 1.3rem;
+        .admin-logo h1 {
+            font-size: 1.5rem;
             background: linear-gradient(to right, #ff6b6b, #ff8e53);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.85rem;
-        }
-
-        .nav-links a:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* Main Content */
-        .container {
-            padding: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Time Slot Cards */
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .slot-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 1.2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .slot-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            background: rgba(26, 26, 46, 0.95);
-        }
-
-        .slot-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .slot-time {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffcc70;
-        }
-
-        .slot-tickets {
-            background: var(--accent);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .slot-prizes {
-            margin: 1.2rem 0;
-            padding: 0.8rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-
-        .slot-prizes h4 {
-            margin-bottom: 0.5rem;
-            color: #64b5f6;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .slot-prizes ul {
-            list-style-type: none;
-            padding-left: 1.2rem;
-        }
-
-        .slot-prizes li {
-            margin: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .slot-prizes i {
-            color: #a5d6a7;
-            font-size: 0.9rem;
-        }
-
-        .slot-price {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #4db6ac;
-            margin: 1rem 0;
-        }
-
-        .slot-price span {
-            font-size: 1.5rem;
-            color: #fff;
-        }
-
-        .slot-actions {
-            display: flex;
-            gap: 0.8rem;
-            margin-top: 1.2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.7rem 1.2rem;
-            border-radius: 50px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 10px;
+        }
+
+        .admin-nav-links {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .admin-nav-links::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        .admin-nav-link {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            color: #e0e0e0;
+            text-decoration: none;
+            border-radius: 8px;
+            min-width: 85px;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.85rem;
+        }
+
+        .admin-nav-link:hover {
+            background: var(--sidebar-hover);
+        }
+
+        .admin-nav-link.active {
+            background: var(--sidebar-active);
+            color: white;
+            font-weight: 600;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--accent);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        /* Main Content */
+        .admin-main {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .admin-header {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-header h2 {
+            color: #ffcc70;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-header-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .admin-search {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .admin-search input {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            width: 100%;
+            flex: 1;
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .admin-profile img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .admin-content {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 25px;
+            display: none;
+        }
+
+        .admin-content.active {
+            display: block;
+        }
+
+        /* Section Tabs */
+        .section-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .section-tabs::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        .tab-btn {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
             font-size: 0.9rem;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .admin-table th {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #ffcc70;
+            font-size: 0.9rem;
+        }
+
+        .admin-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .admin-table tr:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .status-pending {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .status-approved {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .status-rejected {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            width: 100%;
         }
 
         .btn-primary {
             background: var(--secondary);
             color: white;
-            flex: 1;
-            min-width: 120px;
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: #bb86fc;
-            border: 2px solid #bb86fc;
-            min-width: 120px;
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .btn:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-primary:hover:not(:disabled) {
-            background: var(--primary);
-        }
-
-        .btn-secondary:hover:not(:disabled) {
-            background: rgba(187, 134, 252, 0.1);
-        }
-
-        /* Ticket Selection Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            overflow-y: auto;
-            padding: 0.5rem;
-        }
-
-        .modal-content {
-            background: #1e1e2e;
-            width: 100%;
-            max-width: 95%;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-header {
-            background: var(--primary);
-            padding: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h3 {
+        .btn-success {
+            background: var(--success);
             color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        /* Game Controls */
+        .game-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .game-board {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .session-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .info-value {
             font-size: 1.3rem;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .modal-body {
-            padding: 1.5rem;
-        }
-
-        .ticket-grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .ticket-option {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 0.8rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            border: 2px solid transparent;
-            min-height: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .ticket-option:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .ticket-option.selected {
-            border-color: var(--accent);
-            background: rgba(233, 30, 99, 0.15);
-        }
-
-        .ticket-option.booked {
-            background: rgba(255, 0, 0, 0.2);
-            cursor: not-allowed;
-        }
-
-        .ticket-option.booked::after {
-            content: "Booked";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
             font-weight: bold;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        .ticket-option .ticket-number {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-
-        .ticket-option .ticket-status {
-            font-size: 0.8rem;
-            color: #aaa;
-        }
-
-        .modal-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1.5rem;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .ticket-preview {
-            background: #fff;
-            border-radius: 10px;
-            padding: 1.2rem;
-            color: #333;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 1.2rem;
-        }
-
-        .ticket-header {
-            text-align: center;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .ticket-grid {
-            display: grid;
-            grid-template-columns: repeat(9, 1fr);
-            gap: 4px;
-        }
-
-        .ticket-cell {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f5f5f5;
-            border-radius: 4px;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.8rem;
-        }
-
-        .ticket-cell.has-number {
-            background: #e3f2fd;
-            border: 1px solid #bbdefb;
-        }
-
-        .ticket-cell.called {
-            background: #c8e6c9;
-            border: 1px solid #a5d6a7;
-            font-weight: bold;
-        }
-
-        .ticket-footer {
-            margin-top: 0.8rem;
-            text-align: center;
-            color: #666;
-            font-size: 0.85rem;
-        }
-
-        /* Scrollable tickets */
-        .scrollable-ticket {
-            overflow-x: auto;
-        }
-
-        /* Live Draw Section */
-        .live-draw-section {
-            margin-top: 1.5rem;
-            padding: 1.2rem;
-            background: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .live-draw-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .live-draw-header h2 {
+            margin: 5px 0;
             color: #ffcc70;
-            font-size: 1.5rem;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: #aaa;
         }
 
         .called-numbers {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.2rem;
-            min-height: 40px;
-            max-width: 100%;
-            overflow-x: auto;
-            padding-bottom: 5px;
+            gap: 8px;
+            justify-content: center;
+            margin: 20px 0;
         }
 
         .called-number {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--accent);
             border-radius: 50%;
             font-weight: bold;
-            font-size: 0.9rem;
-            flex-shrink: 0;
+            font-size: 1rem;
         }
 
-        .live-tickets {
+        .current-number {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto;
+            box-shadow: 0 0 15px rgba(123, 31, 162, 0.5);
+        }
+
+        .game-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-card {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 8px 0;
+            color: #ffcc70;
+        }
+
+        .winners-container {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .winner-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .winner-badge {
+            width: 40px;
+            height: 40px;
+            background: gold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .winner-info {
+            flex: 1;
+        }
+
+        .winner-name {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .winner-prize {
+            color: #ffcc70;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Login form */
+        .login-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+        }
+
+        .login-container h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .login-container p {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1rem;
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                padding: 0.8rem;
+        @media (min-width: 481px) {
+            .admin-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
             
-            .nav-links {
+            .admin-header-controls {
+                flex-direction: row;
+                justify-content: flex-end;
+                width: auto;
+            }
+            
+            .admin-search {
+                width: auto;
+            }
+            
+            .admin-profile {
+                width: auto;
+            }
+            
+            .session-info {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+            }
+            
+            .admin-nav {
+                width: 80px;
+                height: 100vh;
+                position: sticky;
+                top: 0;
+                padding: 20px 0;
+                box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3);
+            }
+            
+            .admin-nav-links {
+                flex-direction: column;
+                overflow-x: visible;
+                padding: 0 10px;
+            }
+            
+            .admin-nav-link {
+                flex-direction: row;
+                padding: 15px;
+                min-width: auto;
+                font-size: 1rem;
+                gap: 15px;
+            }
+            
+            .admin-nav-link span {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(26, 26, 46, 0.95);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             }
             
-            .nav-links.active {
+            .notification-badge {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .admin-logo h1 span {
+                display: none;
+            }
+            
+            .admin-main {
+                padding: 30px;
+            }
+            
+            .mobile-menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .admin-nav {
+                width: 280px;
+            }
+            
+            .admin-nav-link span {
+                display: inline;
+            }
+            
+            .admin-logo h1 span {
+                display: inline;
+            }
+            
+            .game-controls {
                 display: flex;
+                flex-wrap: wrap;
             }
             
-            .hamburger {
-                display: block;
+            .game-stats {
+                display: flex;
+                justify-content: space-around;
             }
             
-            .slot-actions {
-                flex-direction: column;
+            .stat-card {
+                width: 150px;
+            }
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .admin-header h2 {
+                font-size: 1.4rem;
             }
             
-            .background-section h1 {
+            .game-controls {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .current-number {
+                width: 70px;
+                height: 70px;
                 font-size: 1.8rem;
             }
             
-            .container {
-                padding: 1rem;
+            .called-number {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
             }
             
-            .slot-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            
-            .ticket-grid-container {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-
-            .live-draw-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .background-section {
-                padding: 1rem;
-            }
-            
-            .background-section h1 {
-                font-size: 1.6rem;
-            }
-            
-            .background-section p {
-                font-size: 0.85rem;
-            }
-            
-            .slot-time {
-                font-size: 1.3rem;
-            }
-            
-            .ticket-grid {
-                min-width: 300px;
-                gap: 3px;
-            }
-            
-            .ticket-cell {
-                font-size: 0.75rem;
-            }
-            
-            .live-tickets {
-                grid-template-columns: 1fr;
-            }
-            
-            .ticket-preview {
-                margin-bottom: 0.8rem;
-            }
-
-            .slot-card {
-                padding: 1rem;
-            }
-
-            .slot-prizes {
-                padding: 0.6rem;
-            }
-
-            .slot-prizes li {
-                font-size: 0.8rem;
-            }
-
-            .slot-price {
+            .winner-badge {
+                width: 35px;
+                height: 35px;
                 font-size: 1rem;
             }
-
-            .slot-price span {
-                font-size: 1.3rem;
-            }
-
-            .btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .modal-body {
-                padding: 1rem;
-            }
-
-            .ticket-option {
-                padding: 0.6rem;
-                min-height: 70px;
-            }
-
-            .ticket-option .ticket-number {
-                font-size: 1rem;
-            }
-
-            .ticket-option .ticket-status {
-                font-size: 0.75rem;
+            
+            .winner-name {
+                font-size: 0.95rem;
             }
         }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .slot-card {
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .slot-card:nth-child(2) { animation-delay: 0.1s; }
-        .slot-card:nth-child(3) { animation-delay: 0.2s; }
-        .slot-card:nth-child(4) { animation-delay: 0.3s; }
-        .slot-card:nth-child(5) { animation-delay: 0.4s; }
-        .slot-card:nth-child(6) { animation-delay: 0.5s; }
