@@ -1,21 +1,34 @@
 <?php
 session_start();
-include 'db.php';
+
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "loginhousie";
+
+// Connect
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM users WHERE username = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $username);
+$stmt = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+$stmt->bind_param("ss", $username, $password);
 $stmt->execute();
 $result = $stmt->get_result();
-$user = $result->fetch_assoc();
 
-if ($user && password_verify($password, $user['password'])) {
+if ($result->num_rows === 1) {
   $_SESSION['username'] = $username;
   header("Location: index.html");
+  exit();
 } else {
-  echo "Login failed. <a href='index.html'>Try again</a>";
+  echo "Invalid login. Please try again.";
 }
+
+$stmt->close();
+$conn->close();
 ?>
