@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +20,6 @@
             <i class="fas fa-broadcast-tower"></i> Live Draw in Progress for 7:00 PM
         </div>
     </div>
-
     <!-- Navigation Bar -->
     <nav>
         <div class="logo">
@@ -24,9 +27,13 @@
             <h1>Online Housie</h1>
         </div>
         <div class="nav-links">
-            <a href="#"><i class="fas fa-ticket-alt"></i> MyTickets</a>
-            <a href="#"><i class="fas fa-wallet"></i> MyBalance</a>
-            <a href="logint.html"><i class="fas fa-user"></i> Login</a>
+            <a href="mytickets.html"><i class="fas fa-ticket-alt"></i> MyTickets</a>
+            <a href="mybalance.html"><i class="fas fa-wallet"></i> MyBalance</a>
+           <?php if (isset($_SESSION['username'])): ?>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <?php else: ?>
+            <a href="login.php"><i class="fas fa-user"></i> Login</a>
+        <?php endif; ?>
         </div>
         <button class="hamburger">
             <i class="fas fa-bars"></i>
@@ -342,7 +349,25 @@
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-        
+    // Check login state and update the nav link
+    const authLink = document.getElementById('auth-link');
+
+    function updateAuthLink() {
+        if (localStorage.getItem('loggedIn') === 'true') {
+            authLink.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+            authLink.onclick = function(e) {
+                e.preventDefault();
+                localStorage.removeItem('loggedIn');
+                window.location.href = 'login.html';
+            };
+        } else {
+            authLink.innerHTML = '<i class="fas fa-user"></i> Login';
+            authLink.setAttribute('href', 'login.html');
+            authLink.onclick = null;
+        }
+    }
+
+    updateAuthLink();
         // Modal functions
         function openModal(time) {
             document.getElementById('modalTime').textContent = time;
